@@ -1,32 +1,20 @@
-
-//import './App.css';
-
 import React, { Component, useState } from "react";
-
+import "../styles/App.css";
 
 class App extends Component {
-
-  constructor(props) {
+  constructor() {
     super();
     this.state = { time: new Date() };
   }
-
+  currentTime() {
+    this.setState({ time: new Date() });
+  }
   componentDidMount() {
-    setInterval(this.currentTime, 1000);
+    this.interval = setInterval(() => this.currentTime(), 1000);
   }
-
-  componentDidUpdate() {
-    this.interval = setInterval(this.currentTime, 1000);
-  }
-
   componentWillUnmount() {
     clearInterval(this.interval);
   }
-
-  currentTime = () => {
-    this.setState({time:new Date()})
-  }
-
   render() {
     return (
       <>
@@ -37,5 +25,6 @@ class App extends Component {
     );
   }
 }
+
 export default App;
 
